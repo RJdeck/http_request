@@ -2,7 +2,7 @@ version: '3'
 
 services:
   server:
-    image: 'rjdeck/server'
+    image: 'rjdeck/text_nft_server'
     build:
       context: '.'
       dockerfile: 'Dockerfile'
@@ -14,3 +14,18 @@ services:
       - BUCKET_model_folder=${BUCKET_model_folder}
       - TOKEN=${TOKEN}
       - IMAGE_URL=${IMAGE_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - ENDPOINT_URL=${ENDPOINT_URL}
+      - DOWNLOAD_ENDPOINT=${DOWNLOAD_ENDPOINT}
+      - NFT_USER_URL=${NFT_USER_URL}
+      - NFT_TOKEN_URL=${NFT_TOKEN_URL}
+    volumes:
+      - ./http_request.py:/app/http_request.py
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
