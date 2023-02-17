@@ -1,0 +1,7 @@
+src
+.idea
+__pycache__
+.env
+venv_http
+*.pt
+*.ply

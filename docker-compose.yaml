@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  server:
+    image: 'rjdeck/server'
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '5000:5000'
+    environment:
+      - BUCKET_NAME=${BUCKET_NAME}
+      - REGION=${REGION}
+      - BUCKET_model_folder=${BUCKET_model_folder}
+      - TOKEN=${TOKEN}
+      - IMAGE_URL=${IMAGE_URL}

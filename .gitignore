@@ -1,0 +1,10 @@
+﻿*.pyc
+.idea
+src
+.env
+*.jpg
+venv_http
+*.pt
+*.ply
+server
+http_request_queue.py
